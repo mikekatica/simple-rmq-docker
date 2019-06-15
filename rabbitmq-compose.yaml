@@ -1,0 +1,18 @@
+version: "3.7"
+services:
+  rabbit:
+    image: rabbitmq:3.7.15-management-alpine
+    network_mode: host
+    volumes:
+      - data:/var/lib/rabbitmq
+    deploy:
+      replicas: 1
+    configs:
+      - source: rabbitmq_config
+        target: /etc/rabbitmq/rabbitmq.conf
+        mode: 0444
+configs:
+  rabbitmq_config:
+    file: ./rabbitmq.conf
+volumes:
+  data:
