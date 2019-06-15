@@ -1,0 +1,11 @@
+version: "3.7"
+services:
+  rabbit:
+    image: rabbitmq:3.7.15-management-alpine
+    network_mode: host
+    restart: on-failure
+    volumes:
+      - data:/var/lib/rabbitmq
+      - /etc/rabbitmq:/etc/rabbitmq
+volumes:
+  data:
